@@ -1,6 +1,11 @@
 #!/bin/bash
 set -e -x
 
+# semaphore does not creates a virtualenv for us
+sudo apt-get install -y python-virtualenv python-dev
+virtualenv ~/.venv
+source ~/.venv/bin/activate
+
 JOB=${1}
 NO_JOBS=${2}
 
