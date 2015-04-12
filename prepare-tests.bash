@@ -1,6 +1,11 @@
 #!/bin/bash
 set -e -x
 
+# semaphore does not creates a virtualenv for us
+sudo apt-get install -y python-virtualenv python-dev
+virtualenv ~/.venv
+source ~/.venv/bin/activate
+
 # install snakeoil as pkgcore dep
 # snakeoil: we need explicit --install-headers because of pip bug
 #   -> https://github.com/pypa/pip/pull/2421
