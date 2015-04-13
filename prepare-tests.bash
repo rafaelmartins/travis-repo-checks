@@ -7,8 +7,8 @@ virtualenv ~/.venv
 source ~/.venv/bin/activate
 
 # fix users and groups
-sudo groupadd -g 10 wheel
-sudo groupadd -g 250 portage
+sudo groupadd -f -g 10 wheel
+sudo groupadd -f -g 250 portage
 sudo useradd -m -d /var/tmp/portage -g 250 -u 250 -s /bin/false portage
 
 # install snakeoil as pkgcore dep
