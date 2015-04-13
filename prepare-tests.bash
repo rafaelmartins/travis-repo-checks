@@ -7,9 +7,9 @@ virtualenv ~/.venv
 source ~/.venv/bin/activate
 
 # fix users and groups
-sudo echo "portage:x:250:250:portage:/var/tmp/portage:/bin/false" >> /etc/passwd
-sudo echo "portage::250:portage" >> /etc/group
-sudo echo "wheel:x:10:root" >> /etc/group
+sudo groupadd -g 10 wheel
+sudo groupadd -g 250 portage
+sudo useradd -m -d /var/tmp/portage -g 250 -u 250 -s /bin/false portage
 
 # install snakeoil as pkgcore dep
 # snakeoil: we need explicit --install-headers because of pip bug
