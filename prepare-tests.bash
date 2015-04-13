@@ -2,9 +2,14 @@
 set -e -x
 
 # semaphore does not creates a virtualenv for us
-sudo apt-get install -y python-virtualenv python-dev
+sudo apt-get install -y python-virtualenv python-dev libxml2-utils
 virtualenv ~/.venv
 source ~/.venv/bin/activate
+
+# fix users and groups
+sudo echo "portage:x:250:250:portage:/var/tmp/portage:/bin/false" >> /etc/passwd
+sudo echo "portage::250:portage" >> /etc/group
+sudo echo "wheel:x:10:root" >> /etc/group
 
 # install snakeoil as pkgcore dep
 # snakeoil: we need explicit --install-headers because of pip bug
